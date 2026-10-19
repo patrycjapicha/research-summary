@@ -1,0 +1,10 @@
+# Raw interview data (PII — do not publish)
+UI Session Transcript*.txt
+transcripts.json
+
+# Tooling / system
+.playwright-mcp/
+.DS_Store
+node_modules/
+dist/
+test-results/
