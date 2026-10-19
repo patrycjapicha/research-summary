@@ -44,17 +44,14 @@ showTakeaway(0);
 
 // Top-level research navigation.
 const researchView=document.querySelector('#researchView');
-const visionView=document.querySelector('#vision');
 function showResearch(target='overview'){
-  researchView.hidden=false;visionView.hidden=true;
+  researchView.hidden=false;
   document.querySelectorAll('.nav-item').forEach(a=>a.classList.toggle('active',a.dataset.target===target));
   history.replaceState(null,'',`#${target}`);
   if(target!=='overview') document.getElementById(target)?.scrollIntoView({behavior:'smooth',block:'start'}); else window.scrollTo({top:0,behavior:'smooth'});
 }
 function showVision(){
-  researchView.hidden=true;visionView.hidden=false;
-  document.querySelectorAll('.nav-item').forEach(a=>a.classList.toggle('active',a.dataset.target==='vision'));
-  history.replaceState(null,'','#vision');window.scrollTo({top:0,behavior:'smooth'});
+  showResearch('vision');
 }
 document.querySelectorAll('.nav-item,.back-to-research,footer a').forEach(a=>a.addEventListener('click',e=>{const target=a.dataset.target||'overview';e.preventDefault();if(target==='vision')showVision();else showResearch(target)}));
 if(location.hash==='#vision')showVision();
